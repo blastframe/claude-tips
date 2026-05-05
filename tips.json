@@ -1,11 +1,11 @@
 {
   "categories": [
+    { "id": "tokens", "label": "Tokens", "icon": "toll" },
     {
       "id": "agentic-automation",
       "label": "Agentic & automation",
       "icon": "smart_toy"
     },
-    { "id": "chat-discipline", "label": "Chat discipline", "icon": "forum" },
     {
       "id": "claude-context-management",
       "label": "Claude context management",
@@ -20,17 +20,6 @@
       "id": "debugging-troubleshooting",
       "label": "Debugging & troubleshooting",
       "icon": "bug_report"
-    },
-    {
-      "id": "formatting-output",
-      "label": "Formatting & output",
-      "icon": "tune"
-    },
-    { "id": "measure-reuse", "label": "Measure & reuse", "icon": "data_usage" },
-    {
-      "id": "model-control",
-      "label": "Model control",
-      "icon": "switch_access_shortcut"
     },
     {
       "id": "planning-architecture",
@@ -49,11 +38,6 @@
     },
     { "id": "security-safety", "label": "Security & safety", "icon": "shield" },
     {
-      "id": "session-strategy",
-      "label": "Session strategy",
-      "icon": "schedule"
-    },
-    {
       "id": "testing-quality",
       "label": "Testing & quality",
       "icon": "verified"
@@ -64,24 +48,92 @@
       "icon": "device_hub"
     }
   ],
-  "tokens": [
-    {
-      "title": "Context multiplier",
-      "tip": "Your 10th message can cost 11x more than your first because Claude rereads the full conversation each turn.",
-      "icon": "analytics"
-    },
-    {
-      "title": "Output also counts",
-      "tip": "Every word Claude generates is billed too. Shorter answers save both input and output tokens.",
-      "icon": "translate"
-    },
-    {
-      "title": "Use Caveman",
-      "tip": "Asking Claude to 'talk like a caveman' can cut output token use by up to 65%.",
-      "icon": "history_edu"
-    }
-  ],
   "tips": [
+    {
+      "category": "Tokens",
+      "entries": [
+        {
+          "title": "Context multiplier",
+          "tip": "Your 10th message can cost 11x more than your first because Claude rereads the full conversation each turn.",
+          "icon": "analytics"
+        },
+        {
+          "title": "Output also counts",
+          "tip": "Every word Claude generates is billed too. Shorter answers save both input and output tokens.",
+          "icon": "translate"
+        },
+        {
+          "title": "Edit, don't follow up",
+          "tip": "Instead of sending a correction message when Claude makes a mistake, click 'edit' on your original prompt and fix the wording. This replaces the exchange in the history rather than adding to it.",
+          "icon": "edit"
+        },
+        {
+          "title": "Batch your questions",
+          "tip": "Combine multiple tasks into a single message. One prompt with three tasks equals one context load, whereas three separate messages result in three context loads.",
+          "icon": "inventory_2"
+        },
+        {
+          "title": "Fresh chat every 15–20",
+          "tip": "Start a new conversation every 15 to 20 messages. Ask Claude to summarize the current chat first, then paste that summary as the starting point of the new chat to ditch the bloat.",
+          "icon": "restart_alt"
+        },
+        {
+          "title": "Use fewer tokens",
+          "tip": "Shift your mindset from counting messages to counting tokens. Since Claude rereads the entire history every turn, the 10th message costs significantly more than the first.",
+          "icon": "analytics"
+        },
+        {
+          "title": "Track token usage",
+          "tip": "Install a local dashboard or check your machine's JSONL log files to see real input/output token data. You can't fix what you can't measure.",
+          "icon": "dashboard"
+        },
+        {
+          "title": "Upload to projects",
+          "tip": "Upload recurring files (PDFs, style guides, contracts) to the 'Projects' feature once. This allows Claude to reference them without retokenizing the document every time.",
+          "icon": "folder_shared"
+        },
+        {
+          "title": "Set up memory",
+          "tip": "Use 'Memory and User Settings' to save your role and communication style permanently. This stops you from burning tokens on 'Act as a...' setup prompts in every chat.",
+          "icon": "memory"
+        },
+        {
+          "title": "Turn off unused features",
+          "tip": "Disable web search, connectors, and 'Advanced Thinking' if you don't need them. These features add tokens to every response.",
+          "icon": "toggle_off"
+        },
+        {
+          "title": "Use Haiku for simple tasks",
+          "tip": "Use the Haiku model for brainstorming, formatting, or grammar checks. It handles these tasks at a much lower cost than Sonnet or Opus.",
+          "icon": "auto_mode"
+        },
+        {
+          "title": "Enable overage safety net",
+          "tip": "Enable the overage feature in usage settings. This switches to pay-as-you-go billing at API rates when limits are hit, so you don't lose work.",
+          "icon": "shield"
+        },
+        {
+          "title": "Spread work sessions",
+          "tip": "Claude uses a rolling 5-hour window. Divide your work into morning, afternoon, and evening sessions to let your usage reset throughout the day.",
+          "icon": "schedule"
+        },
+        {
+          "title": "Work during off-peak",
+          "tip": "Perform resource-intensive tasks in the evening or on weekends. Usage limits may be consumed more quickly during peak hours (5 AM–11 AM PT).",
+          "icon": "schedule_send"
+        },
+        {
+          "title": "Early morning ping",
+          "tip": "Send a tiny message early in the morning (e.g., 6 AM) to start your rolling 5-hour window before you actually sit down to work.",
+          "icon": "notifications_active"
+        },
+        {
+          "title": "Talk like a caveman",
+          "tip": "Instruct Claude to drop the fluff and talk like a caveman. This can reduce output token consumption by up to 65%.",
+          "icon": "history_edu"
+        }
+      ]
+    },
     {
       "category": "Agentic & automation",
       "entries": [
@@ -124,31 +176,6 @@
           "title": "Use structured output",
           "tip": "Ask for JSON or XML when the result feeds another process. Structured output is easier to parse and validate.",
           "icon": "data_object"
-        }
-      ]
-    },
-    {
-      "category": "Chat discipline",
-      "entries": [
-        {
-          "title": "Edit, don't follow up",
-          "tip": "Instead of sending a correction message when Claude makes a mistake, click 'edit' on your original prompt and fix the wording. This replaces the exchange in the history rather than adding to it.",
-          "icon": "edit"
-        },
-        {
-          "title": "Batch your questions",
-          "tip": "Combine multiple tasks into a single message. One prompt with three tasks equals one context load, whereas three separate messages result in three context loads.",
-          "icon": "inventory_2"
-        },
-        {
-          "title": "Fresh chat every 15–20",
-          "tip": "Start a new conversation every 15 to 20 messages. Ask Claude to summarize the current chat first, then paste that summary as the starting point of the new chat to ditch the bloat.",
-          "icon": "restart_alt"
-        },
-        {
-          "title": "Use fewer tokens",
-          "tip": "Shift your mindset from counting messages to counting tokens. Since Claude rereads the entire history every turn, the 10th message costs significantly more than the first.",
-          "icon": "analytics"
         }
       ]
     },
@@ -301,56 +328,6 @@
           "title": "Request root cause first",
           "tip": "Ask 'What is causing this?' before 'Fix it'. Understanding the cause often reveals a better solution.",
           "icon": "travel_explore"
-        }
-      ]
-    },
-    {
-      "category": "Formatting & output",
-      "entries": [
-        {
-          "title": "Talk like a caveman",
-          "tip": "Instruct Claude to drop the fluff and talk like a caveman. This can reduce output token consumption by up to 65%.",
-          "icon": "history_edu"
-        }
-      ]
-    },
-    {
-      "category": "Measure & reuse",
-      "entries": [
-        {
-          "title": "Track token usage",
-          "tip": "Install a local dashboard or check your machine's JSONL log files to see real input/output token data. You can't fix what you can't measure.",
-          "icon": "dashboard"
-        },
-        {
-          "title": "Upload to projects",
-          "tip": "Upload recurring files (PDFs, style guides, contracts) to the 'Projects' feature once. This allows Claude to reference them without retokenizing the document every time.",
-          "icon": "folder_shared"
-        },
-        {
-          "title": "Set up memory",
-          "tip": "Use 'Memory and User Settings' to save your role and communication style permanently. This stops you from burning tokens on 'Act as a...' setup prompts in every chat.",
-          "icon": "memory"
-        }
-      ]
-    },
-    {
-      "category": "Model control",
-      "entries": [
-        {
-          "title": "Turn off unused features",
-          "tip": "Disable web search, connectors, and 'Advanced Thinking' if you don't need them. These features add tokens to every response.",
-          "icon": "toggle_off"
-        },
-        {
-          "title": "Use Haiku for simple tasks",
-          "tip": "Use the Haiku model for brainstorming, formatting, or grammar checks. It handles these tasks at a much lower cost than Sonnet or Opus.",
-          "icon": "auto_mode"
-        },
-        {
-          "title": "Enable overage safety net",
-          "tip": "Enable the overage feature in usage settings. This switches to pay-as-you-go billing at API rates when limits are hit, so you don't lose work.",
-          "icon": "shield"
         }
       ]
     },
@@ -526,26 +503,6 @@
           "title": "Validate external sources",
           "tip": "If Claude fetches or references external data, verify URLs and sources before trusting the output.",
           "icon": "fact_check"
-        }
-      ]
-    },
-    {
-      "category": "Session strategy",
-      "entries": [
-        {
-          "title": "Spread work sessions",
-          "tip": "Claude uses a rolling 5-hour window. Divide your work into morning, afternoon, and evening sessions to let your usage reset throughout the day.",
-          "icon": "schedule"
-        },
-        {
-          "title": "Work during off-peak",
-          "tip": "Perform resource-intensive tasks in the evening or on weekends. Usage limits may be consumed more quickly during peak hours (5 AM–11 AM PT).",
-          "icon": "schedule_send"
-        },
-        {
-          "title": "Early morning ping",
-          "tip": "Send a tiny message early in the morning (e.g., 6 AM) to start your rolling 5-hour window before you actually sit down to work.",
-          "icon": "notifications_active"
         }
       ]
     },

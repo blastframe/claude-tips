@@ -9,36 +9,76 @@ document.addEventListener("DOMContentLoaded", async () => {
     categoryMap[cat.label] = cat;
   });
 
-  // Get all unique categories from tips
+  // Get all unique categories from tips (preserves insertion order)
   const tipCategories = data.tips.map((item) => item.category);
   const uniqueCategories = [...new Set(tipCategories)];
 
   // Initialize filter state with all categories selected
   let selectedCategories = new Set(uniqueCategories);
 
-  // Tab switching
-  const tabButtons = document.querySelectorAll(".tab-button");
-  const tabPanels = document.querySelectorAll(".tab-panel");
+  // Render all tips dynamically into the content area
+  const contentArea = document.querySelector(".content-area");
+  const filterOptions = document.querySelector(".filter-options");
   const filterContainer = document.querySelector(".filter-container");
   const filterToggle = document.querySelector(".filter-toggle");
+  const filterMenu = document.querySelector(".filter-menu");
 
-  tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const target = button.dataset.tab;
+  data.tips.forEach((categoryGroup) => {
+    const section = document.createElement("div");
+    section.className = "category";
 
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-      tabPanels.forEach((panel) => panel.classList.remove("active"));
+    const header = document.createElement("div");
+    header.className = "category-header";
+    header.textContent = categoryGroup.category;
+    section.appendChild(header);
 
-      button.classList.add("active");
-      document.getElementById(target)?.classList.add("active");
+    categoryGroup.entries.forEach((entry) => {
+      const tipItem = document.createElement("div");
+      tipItem.className = "tip-item";
 
-      // Show filter only on tips tab
-      filterContainer.style.display = target === "tips" ? "block" : "none";
+      const trigger = document.createElement("button");
+      trigger.className = "tip-trigger";
+
+      const icon = document.createElement("span");
+      icon.className = "material-icons-outlined";
+      icon.textContent = entry.icon || "lightbulb";
+
+      const title = document.createElement("span");
+      title.textContent = entry.title;
+
+      trigger.appendChild(icon);
+      trigger.appendChild(title);
+
+      const bodyWrapper = document.createElement("div");
+      bodyWrapper.className = "tip-body-wrapper";
+
+      const body = document.createElement("div");
+      body.className = "tip-body";
+      body.textContent = entry.tip;
+
+      bodyWrapper.appendChild(body);
+      tipItem.appendChild(trigger);
+      tipItem.appendChild(bodyWrapper);
+
+      trigger.addEventListener("click", () => {
+        const isExpanded = tipItem.classList.contains("expanded");
+
+        document.querySelectorAll(".tip-item").forEach((item) => {
+          item.classList.remove("expanded");
+        });
+
+        if (!isExpanded) {
+          tipItem.classList.add("expanded");
+        }
+      });
+
+      section.appendChild(tipItem);
     });
+
+    contentArea.appendChild(section);
   });
 
   // Populate filter menu
-  const filterOptions = document.querySelector(".filter-options");
   uniqueCategories.forEach((categoryLabel) => {
     const categoryData = categoryMap[categoryLabel] || {};
     const label = document.createElement("label");
@@ -75,8 +115,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Filter toggle
-  const filterMenu = document.querySelector(".filter-menu");
-
   filterToggle.addEventListener("click", (e) => {
     e.stopPropagation();
     filterMenu.classList.toggle("visible");
@@ -91,8 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Apply filters function
   function applyFilters() {
-    const tipsPanel = document.getElementById("tips");
-    const categories = tipsPanel.querySelectorAll(".category");
+    const categories = contentArea.querySelectorAll(".category");
 
     categories.forEach((category) => {
       const header = category.querySelector(".category-header");
@@ -105,26 +142,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   }
-
-  // Tip expansion
-  const triggers = document.querySelectorAll(".tip-trigger");
-
-  triggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      const tip = trigger.closest(".tip-item");
-      if (!tip) return;
-      const isExpanded = tip.classList.contains("expanded");
-
-      document.querySelectorAll(".tip-item").forEach((item) => {
-        item.classList.remove("expanded");
-      });
-
-      if (!isExpanded) {
-        tip.classList.add("expanded");
-      }
-    });
-  });
-
-  // Disable filter on initial load (not on tips tab)
-  filterToggle.disabled = true;
 });

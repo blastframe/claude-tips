@@ -61,32 +61,10 @@ h1 {
   line-height: 1.1;
 }
 
-.tab-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 8px;
+.filter-row {
+  display: flex;
+  justify-content: flex-end;
   margin-top: 18px;
-  align-items: center;
-}
-
-.tab-button {
-  border: none;
-  border-radius: 999px;
-  padding: 10px 14px;
-  background: var(--level-1);
-  color: var(--secondary-text);
-  font-size: 13px;
-  cursor: pointer;
-  font-family: "IBM Plex Serif", serif;
-  font-weight: 600;
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-.tab-button.active {
-  background: var(--system-accent);
-  color: var(--primary-text);
 }
 
 .content-area {
@@ -111,14 +89,6 @@ h1 {
 
 .content-area::-webkit-scrollbar-thumb:hover {
   background: #4a4949;
-}
-
-.tab-panel {
-  display: none;
-}
-
-.tab-panel.active {
-  display: block;
 }
 
 .info-card {
@@ -248,13 +218,8 @@ h1 {
   transition: background 0.15s ease;
 }
 
-.filter-toggle:hover:not(:disabled) {
+.filter-toggle:hover {
   background: var(--level-2);
-}
-
-.filter-toggle:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .filter-toggle .material-icons-outlined {
