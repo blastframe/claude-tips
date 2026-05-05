@@ -4,7 +4,7 @@
 
 A lightweight Chrome extension for Claude users who want to save tokens, sharpen prompts, and get quick guidance while working with Claude.
 
-<img src="icons/Claude_Tips.jpg" width="200" alt="Claude Tips screenshot">
+<img src="icons/Claude_Tips.jpg" width="500" alt="Claude Tips screenshot">
 
 ## What it includes
 
