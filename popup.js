@@ -350,12 +350,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initState().then(renderContent);
 
-  // Filter toggle
-  filterToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    filterMenu.classList.toggle("visible");
-  });
-
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (
