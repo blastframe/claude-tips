@@ -1,3 +1,5 @@
+![Claude Tips logo](icons/claude-tips-48.png)
+
 # Claude Tips
 
 A lightweight Chrome extension for Claude users who want to save tokens with cleaner workflows.
