@@ -1,0 +1,5 @@
+dist/*.zip
+dist/*.der
+dist/*.bin
+extension.pem
+.DS_Store
