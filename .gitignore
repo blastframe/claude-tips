@@ -1,5 +1,7 @@
-dist/*.zip
-dist/*.der
-dist/*.bin
-extension.pem
 .DS_Store
+dist/
+*.zip
+*.der
+*.bin
+*.crx
+*.pem

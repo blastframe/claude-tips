@@ -15,30 +15,54 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <div class="slide-container">
-      <div class="header">
-        <h1 class="brand-title">
+    <div class="popup-shell">
+      <header class="header">
+        <div class="brand-row">
           <span class="material-icons-outlined">lightbulb</span>
-          Claude Tips
-        </h1>
-      </div>
+          <div>
+            <p class="eyebrow">Claude Tips</p>
+            <h1>Save tokens faster</h1>
+          </div>
+        </div>
 
-      <div class="content-area">
-        <!-- ALL CATEGORIES COMBINED -->
-        <div class="category">
-          <div class="category-header">The Math</div>
+        <div class="tab-row">
+          <button class="tab-button active" data-tab="tokens">Tokens</button>
+          <button class="tab-button" data-tab="tips">Tips</button>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <section class="tab-panel active" id="tokens">
+          <div class="info-card">
+            <p class="info-label">Core insight</p>
+            <p>
+              Claude counts tokens, not messages. Every new reply rereads the
+              entire conversation history, so longer chats burn far more.
+            </p>
+          </div>
 
           <div class="tip-item">
             <button class="tip-trigger">
               <span class="material-icons-outlined">analytics</span>
-              <span>Context Multiplier</span>
+              <span>Context multiplier</span>
             </button>
             <div class="tip-body-wrapper">
               <div class="tip-body">
-                <div class="tip-content">
-                  Your 10th message costs 11x more than your 1st. Claude rereads
-                  every message in history for every turn.
-                </div>
+                Your 10th message can cost 11x more than your first because
+                Claude rereads the full conversation each turn.
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">translate</span>
+              <span>Output also counts</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                Every word Claude generates is billed too. Shorter answers save
+                both input and output tokens.
               </div>
             </div>
           </div>
@@ -46,196 +70,190 @@
           <div class="tip-item">
             <button class="tip-trigger">
               <span class="material-icons-outlined">history_edu</span>
-              <span>Caveman Style</span>
+              <span>Use Caveman</span>
             </button>
             <div class="tip-body-wrapper">
               <div class="tip-body">
-                <div class="tip-content">
-                  Force Claude to drop fluff and "talk like caveman." Reduces
-                  output tokens by up to 65%.
-                </div>
+                Asking Claude to "talk like a caveman" can cut output token use
+                by up to 65%.
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="category">
-          <div class="category-header">Token Hacks</div>
+        <section class="tab-panel" id="tips">
+          <div class="category">
+            <div class="category-header">Chat discipline</div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">edit</span>
-              <span>Edit > Follow-up</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Edit your original prompt instead of sending corrections.
-                  Replaces history instead of multiplying it.
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">edit</span>
+                <span>Edit, don’t follow up</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Fix your original prompt, then regenerate. That replaces the
+                  exchange instead of inflating the chat history.
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">inventory_2</span>
-              <span>Batching Pattern</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  3 questions in 1 prompt = 1 context load. 3 separate prompts =
-                  3 context loads. Batch to stay under limits.
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">restart_alt</span>
+                <span>Fresh chat every 15–20</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  When a conversation grows long, summarize it and start a new
+                  chat. Keep context, lose the bloat.
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">refresh</span>
-              <span>The 15-Msg Rule</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Fresh chat every 15-20 messages. Ask for a summary, carry it
-                  to a new chat, and ditch the bloat.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="category">
-          <div class="category-header">System Limits</div>
-
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">schedule</span>
-              <span>Off-Peak Work</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Avoid 5 AM–11 AM PT. Same query consumes more session limit
-                  during peak hours.
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">inventory_2</span>
+                <span>Batch questions</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  One prompt with three tasks is one context load. Three
+                  separate prompts is three context loads.
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">account_tree</span>
-              <span>Model Selection</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Haiku for drafts/grammar. Sonnet for real work. Opus for deep
-                  thinking. Don't waste budget on Sonnet for basic tasks.
+          <div class="category">
+            <div class="category-header">Measure & reuse</div>
+
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">dashboard</span>
+                <span>Track token usage</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Inspect Claude Code logs locally so you can see real token
+                  usage and cost drivers.
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="category">
-          <div class="category-header">Prompting</div>
-
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">psychology</span>
-              <span>Expert Template</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Structure inputs: Role (0.1% Expert) -> Task -> Context ->
-                  Constraints -> Ask for clarifying questions.
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">folder_shared</span>
+                <span>Upload recurring files</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Put repeated documents in Projects once. Cached content avoids
+                  repeated retokenization.
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">sports_kabaddi</span>
-              <span>Sparring Partner</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Ask AI to "beat up" your ideas. Identify blind spots, weak
-                  data, and unproven assumptions.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="category">
-          <div class="category-header">Knowledge & Tools</div>
-
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">memory</span>
-              <span>Claude.md</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Maintain a local .md file as a single source of truth for
-                  coding standards and brand voice.
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">memory</span>
+                <span>Save preferences</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Save your role, style, and formatting once in memory instead
+                  of retyping it every new chat.
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">hub</span>
-              <span>MCP Employees</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Stack MCP with Skills. Give AI access to real data (Gmail,
-                  Drive, Slack) to execute work, not just consult.
+          <div class="category">
+            <div class="category-header">Model control</div>
+
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">toggle_off</span>
+                <span>Disable unused tools</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Turn off Web Search, connectors, and Advanced Thinking unless
+                  you need them.
+                </div>
+              </div>
+            </div>
+
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">auto_mode</span>
+                <span>Use Haiku first</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Use Haiku for grammar checks, quick edits, and short drafts.
+                  Save Sonnet/Opus for heavier work.
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="tip-item">
-            <button class="tip-trigger">
-              <span class="material-icons-outlined">phonelink_setup</span>
-              <span>Remote Control</span>
-            </button>
-            <div class="tip-body-wrapper">
-              <div class="tip-body">
-                <div class="tip-content">
-                  Use the mobile app to approve permissions for long-running
-                  Claude Code tasks while away from your desk.
+          <div class="category">
+            <div class="category-header">Session strategy</div>
+
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">schedule</span>
+                <span>Spread work across day</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Use multiple sessions each day. Your rolling 5‑hour window
+                  resets usage over time.
+                </div>
+              </div>
+            </div>
+
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">schedule_send</span>
+                <span>Avoid peak hours</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Peak window is roughly 5 AM–11 AM PT on weekdays. Off-peak
+                  stretches your plan.
+                </div>
+              </div>
+            </div>
+
+            <div class="tip-item">
+              <button class="tip-trigger">
+                <span class="material-icons-outlined">shield</span>
+                <span>Enable overage</span>
+              </button>
+              <div class="tip-body-wrapper">
+                <div class="tip-body">
+                  Turn on extra usage with a strict monthly cap so work doesn’t
+                  stop when your session limit hits.
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
-      <div class="footer">
+      <footer class="footer">
         <a
-          href="https://support.anthropic.com/"
-          target="_blank"
           class="footer-action"
+          href="https://github.com/blastframe/claude-tips"
+          target="_blank"
+          rel="noreferrer"
         >
-          <span class="material-icons-outlined">menu_book</span>
-          View Anthropic Documentation
+          <span class="material-icons-outlined">code</span>
+          View source
         </a>
-      </div>
+      </footer>
     </div>
     <script src="popup.js"></script>
   </body>
