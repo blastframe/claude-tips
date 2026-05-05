@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="header">
+        <h1 class="brand-title">
+          <span class="material-icons-outlined">lightbulb</span>
+          Claude Tips
+        </h1>
+      </div>
+
+      <div class="content-area">
+        <!-- ALL CATEGORIES COMBINED -->
+        <div class="category">
+          <div class="category-header">The Math</div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">analytics</span>
+              <span>Context Multiplier</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Your 10th message costs 11x more than your 1st. Claude rereads
+                  every message in history for every turn.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">history_edu</span>
+              <span>Caveman Style</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Force Claude to drop fluff and "talk like caveman." Reduces
+                  output tokens by up to 65%.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-header">Token Hacks</div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">edit</span>
+              <span>Edit > Follow-up</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Edit your original prompt instead of sending corrections.
+                  Replaces history instead of multiplying it.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">inventory_2</span>
+              <span>Batching Pattern</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  3 questions in 1 prompt = 1 context load. 3 separate prompts =
+                  3 context loads. Batch to stay under limits.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">refresh</span>
+              <span>The 15-Msg Rule</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Fresh chat every 15-20 messages. Ask for a summary, carry it
+                  to a new chat, and ditch the bloat.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-header">System Limits</div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">schedule</span>
+              <span>Off-Peak Work</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Avoid 5 AM–11 AM PT. Same query consumes more session limit
+                  during peak hours.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">account_tree</span>
+              <span>Model Selection</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Haiku for drafts/grammar. Sonnet for real work. Opus for deep
+                  thinking. Don't waste budget on Sonnet for basic tasks.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-header">Prompting</div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">psychology</span>
+              <span>Expert Template</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Structure inputs: Role (0.1% Expert) -> Task -> Context ->
+                  Constraints -> Ask for clarifying questions.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">sports_kabaddi</span>
+              <span>Sparring Partner</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Ask AI to "beat up" your ideas. Identify blind spots, weak
+                  data, and unproven assumptions.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-header">Knowledge & Tools</div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">memory</span>
+              <span>Claude.md</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Maintain a local .md file as a single source of truth for
+                  coding standards and brand voice.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">hub</span>
+              <span>MCP Employees</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Stack MCP with Skills. Give AI access to real data (Gmail,
+                  Drive, Slack) to execute work, not just consult.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <button class="tip-trigger">
+              <span class="material-icons-outlined">phonelink_setup</span>
+              <span>Remote Control</span>
+            </button>
+            <div class="tip-body-wrapper">
+              <div class="tip-body">
+                <div class="tip-content">
+                  Use the mobile app to approve permissions for long-running
+                  Claude Code tasks while away from your desk.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <a
+          href="https://support.anthropic.com/"
+          target="_blank"
+          class="footer-action"
+        >
+          <span class="material-icons-outlined">menu_book</span>
+          View Anthropic Documentation
+        </a>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
