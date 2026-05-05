@@ -1,0 +1,623 @@
+{
+  "categories": [
+    {
+      "id": "agentic-automation",
+      "label": "Agentic & automation",
+      "icon": "smart_toy"
+    },
+    { "id": "chat-discipline", "label": "Chat discipline", "icon": "forum" },
+    {
+      "id": "claude-context-management",
+      "label": "Claude context management",
+      "icon": "memory"
+    },
+    {
+      "id": "code-development",
+      "label": "Code & development",
+      "icon": "terminal"
+    },
+    {
+      "id": "debugging-troubleshooting",
+      "label": "Debugging & troubleshooting",
+      "icon": "bug_report"
+    },
+    {
+      "id": "formatting-output",
+      "label": "Formatting & output",
+      "icon": "tune"
+    },
+    { "id": "measure-reuse", "label": "Measure & reuse", "icon": "data_usage" },
+    {
+      "id": "model-control",
+      "label": "Model control",
+      "icon": "switch_access_shortcut"
+    },
+    {
+      "id": "planning-architecture",
+      "label": "Planning & architecture",
+      "icon": "architecture"
+    },
+    {
+      "id": "prompt-engineering",
+      "label": "Prompt engineering",
+      "icon": "edit_note"
+    },
+    {
+      "id": "research-writing",
+      "label": "Research & writing",
+      "icon": "auto_stories"
+    },
+    { "id": "security-safety", "label": "Security & safety", "icon": "shield" },
+    {
+      "id": "session-strategy",
+      "label": "Session strategy",
+      "icon": "schedule"
+    },
+    {
+      "id": "testing-quality",
+      "label": "Testing & quality",
+      "icon": "verified"
+    },
+    {
+      "id": "workflows-integrations",
+      "label": "Workflows & integrations",
+      "icon": "device_hub"
+    }
+  ],
+  "tokens": [
+    {
+      "title": "Context multiplier",
+      "tip": "Your 10th message can cost 11x more than your first because Claude rereads the full conversation each turn.",
+      "icon": "analytics"
+    },
+    {
+      "title": "Output also counts",
+      "tip": "Every word Claude generates is billed too. Shorter answers save both input and output tokens.",
+      "icon": "translate"
+    },
+    {
+      "title": "Use Caveman",
+      "tip": "Asking Claude to 'talk like a caveman' can cut output token use by up to 65%.",
+      "icon": "history_edu"
+    }
+  ],
+  "tips": [
+    {
+      "category": "Agentic & automation",
+      "entries": [
+        {
+          "title": "Anchor on concrete outputs",
+          "tip": "Tell Claude exactly what file, function, or artifact it should produce — vague goals cause wandering.",
+          "icon": "flag"
+        },
+        {
+          "title": "Break long pipelines",
+          "tip": "Split multi-step agent tasks into discrete checkpoints. Verify each step before moving to the next.",
+          "icon": "account_tree"
+        },
+        {
+          "title": "Define abort conditions",
+          "tip": "Tell Claude when to stop and report back rather than keep trying — e.g. 'if you can't find it in 3 attempts, halt'.",
+          "icon": "cancel"
+        },
+        {
+          "title": "Dry-run first",
+          "tip": "Ask Claude to describe the actions it intends to take before it takes them. Catch mistakes before they run.",
+          "icon": "preview"
+        },
+        {
+          "title": "Gate destructive actions",
+          "tip": "Instruct Claude to ask before deleting files, sending messages, or making API writes.",
+          "icon": "lock"
+        },
+        {
+          "title": "Parallelize sub-tasks",
+          "tip": "For independent sub-tasks (e.g. research + code + docs), launch them as separate chats and merge results.",
+          "icon": "fork_right"
+        },
+        {
+          "title": "State your success criteria",
+          "tip": "Include a measurable outcome in your prompt — 'done when all tests pass' beats 'make it work'.",
+          "icon": "task_alt"
+        },
+        {
+          "title": "Use structured output",
+          "tip": "Ask for JSON or XML when the result feeds another process. Structured output is easier to parse and validate.",
+          "icon": "data_object"
+        }
+      ]
+    },
+    {
+      "category": "Chat discipline",
+      "entries": [
+        {
+          "title": "Edit, don't follow up",
+          "tip": "Instead of sending a correction message when Claude makes a mistake, click 'edit' on your original prompt and fix the wording. This replaces the exchange in the history rather than adding to it.",
+          "icon": "edit"
+        },
+        {
+          "title": "Batch your questions",
+          "tip": "Combine multiple tasks into a single message. One prompt with three tasks equals one context load, whereas three separate messages result in three context loads.",
+          "icon": "inventory_2"
+        },
+        {
+          "title": "Fresh chat every 15–20",
+          "tip": "Start a new conversation every 15 to 20 messages. Ask Claude to summarize the current chat first, then paste that summary as the starting point of the new chat to ditch the bloat.",
+          "icon": "restart_alt"
+        },
+        {
+          "title": "Use fewer tokens",
+          "tip": "Shift your mindset from counting messages to counting tokens. Since Claude rereads the entire history every turn, the 10th message costs significantly more than the first.",
+          "icon": "analytics"
+        }
+      ]
+    },
+    {
+      "category": "Claude context management",
+      "entries": [
+        {
+          "title": "Keep claude.md lean",
+          "tip": "Keep your claude.md project file lean (under 200 lines) and use it as an index.",
+          "icon": "description",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Limit unused MCP servers",
+          "tip": "Limit MCP servers and Claude skills to only those used in at least 20% of sessions.",
+          "icon": "settings_input_component",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Manually compact chat",
+          "tip": "Manually compact the chat when usage reaches 50–60%.",
+          "icon": "compress",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Monitor token usage",
+          "tip": "Use '/context' and 'status line' commands in Claude Code to monitor token usage.",
+          "icon": "terminal",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Respect the cache rule",
+          "tip": "Mind the 'Five-Minute Cache Rule' — reprocess after inactivity to avoid spikes.",
+          "icon": "timer",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Save preferences",
+          "tip": "Save your role, style, and formatting once in memory instead of retyping it every new chat.",
+          "icon": "memory"
+        },
+        {
+          "title": "Save progress before compacting",
+          "tip": "Save progress and update progress/plan files before compacting or taking a break.",
+          "icon": "save",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Upload recurring files",
+          "tip": "Put repeated documents in Projects once. Cached content avoids repeated retokenization.",
+          "icon": "folder_shared"
+        }
+      ]
+    },
+    {
+      "category": "Code & development",
+      "entries": [
+        {
+          "title": "Always include a test case",
+          "tip": "Provide sample input and expected output in your prompt. Claude writes tighter code when it can self-check.",
+          "icon": "checklist"
+        },
+        {
+          "title": "Ask for comments sparingly",
+          "tip": "Request inline comments only for non-obvious logic. Excessive comments inflate output tokens with little value.",
+          "icon": "comment"
+        },
+        {
+          "title": "Constrain the interface",
+          "tip": "Specify the exact function signature, class structure, or API contract before asking Claude to implement it.",
+          "icon": "api"
+        },
+        {
+          "title": "Diff before accepting",
+          "tip": "For edits to existing code, ask Claude to show a diff view. Review changes before pasting in.",
+          "icon": "difference"
+        },
+        {
+          "title": "Name the language explicitly",
+          "tip": "Say 'Python 3.11' not just 'Python' — version hints prevent deprecated patterns.",
+          "icon": "code"
+        },
+        {
+          "title": "Pass failing tests as context",
+          "tip": "Paste the test that's failing alongside the code. Claude fixes the right thing when it sees both.",
+          "icon": "bug_report"
+        },
+        {
+          "title": "Pin your dependencies",
+          "tip": "Include the library name and version when asking for integration code. Avoids outdated API calls.",
+          "icon": "push_pin"
+        },
+        {
+          "title": "Request minimal diffs",
+          "tip": "Ask Claude to change only what's necessary. 'Keep the rest of the file intact' prevents over-editing.",
+          "icon": "edit_note"
+        },
+        {
+          "title": "Show the error message",
+          "tip": "Copy the exact error text into your prompt. Stack traces and error codes beat vague descriptions.",
+          "icon": "error_outline"
+        },
+        {
+          "title": "Specify the output format",
+          "tip": "For scripts, say 'print to stdout', 'return a dict', or 'write to file'. Ambiguity wastes iterations.",
+          "icon": "output"
+        },
+        {
+          "title": "Use Plan Mode",
+          "tip": "Use Plan Mode to avoid wasted tokens on incorrect directions.",
+          "icon": "edit_calendar",
+          "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        }
+      ]
+    },
+    {
+      "category": "Debugging & troubleshooting",
+      "entries": [
+        {
+          "title": "Bisect the problem",
+          "tip": "Ask Claude to identify which half of the code contains the bug before attempting a fix.",
+          "icon": "content_cut"
+        },
+        {
+          "title": "Check assumptions first",
+          "tip": "Before diving into a fix, ask Claude to list its assumptions. Wrong assumptions cause wrong fixes.",
+          "icon": "fact_check"
+        },
+        {
+          "title": "Give full stack traces",
+          "tip": "Paste the complete traceback, not just the last line. Context lines often contain the real cause.",
+          "icon": "format_list_numbered"
+        },
+        {
+          "title": "Isolate the repro case",
+          "tip": "Ask Claude to produce the smallest code snippet that reproduces the issue before adding a fix.",
+          "icon": "science"
+        },
+        {
+          "title": "Name the environment",
+          "tip": "OS, runtime version, and framework matter. 'Python 3.11 on macOS ARM' beats 'my machine'.",
+          "icon": "computer"
+        },
+        {
+          "title": "Provide before/after",
+          "tip": "Show what used to work and what changed. Regression bugs are much faster to fix with a changelog.",
+          "icon": "compare_arrows"
+        },
+        {
+          "title": "Request root cause first",
+          "tip": "Ask 'What is causing this?' before 'Fix it'. Understanding the cause often reveals a better solution.",
+          "icon": "travel_explore"
+        }
+      ]
+    },
+    {
+      "category": "Formatting & output",
+      "entries": [
+        {
+          "title": "Talk like a caveman",
+          "tip": "Instruct Claude to drop the fluff and talk like a caveman. This can reduce output token consumption by up to 65%.",
+          "icon": "history_edu"
+        }
+      ]
+    },
+    {
+      "category": "Measure & reuse",
+      "entries": [
+        {
+          "title": "Track token usage",
+          "tip": "Install a local dashboard or check your machine's JSONL log files to see real input/output token data. You can't fix what you can't measure.",
+          "icon": "dashboard"
+        },
+        {
+          "title": "Upload to projects",
+          "tip": "Upload recurring files (PDFs, style guides, contracts) to the 'Projects' feature once. This allows Claude to reference them without retokenizing the document every time.",
+          "icon": "folder_shared"
+        },
+        {
+          "title": "Set up memory",
+          "tip": "Use 'Memory and User Settings' to save your role and communication style permanently. This stops you from burning tokens on 'Act as a...' setup prompts in every chat.",
+          "icon": "memory"
+        }
+      ]
+    },
+    {
+      "category": "Model control",
+      "entries": [
+        {
+          "title": "Turn off unused features",
+          "tip": "Disable web search, connectors, and 'Advanced Thinking' if you don't need them. These features add tokens to every response.",
+          "icon": "toggle_off"
+        },
+        {
+          "title": "Use Haiku for simple tasks",
+          "tip": "Use the Haiku model for brainstorming, formatting, or grammar checks. It handles these tasks at a much lower cost than Sonnet or Opus.",
+          "icon": "auto_mode"
+        },
+        {
+          "title": "Enable overage safety net",
+          "tip": "Enable the overage feature in usage settings. This switches to pay-as-you-go billing at API rates when limits are hit, so you don't lose work.",
+          "icon": "shield"
+        }
+      ]
+    },
+    {
+      "category": "Planning & architecture",
+      "entries": [
+        {
+          "title": "Ask for trade-offs",
+          "tip": "Request pros/cons or multiple approaches before committing. Prevents lock-in to a suboptimal path.",
+          "icon": "balance"
+        },
+        {
+          "title": "Define constraints up front",
+          "tip": "State performance targets, size limits, and compatibility requirements before asking for a design.",
+          "icon": "rule"
+        },
+        {
+          "title": "Generate an ADR",
+          "tip": "Ask Claude to produce an Architecture Decision Record for major choices. Great for team knowledge transfer.",
+          "icon": "gavel"
+        },
+        {
+          "title": "Map dependencies first",
+          "tip": "Before writing code, ask Claude to map all dependencies and interactions. Catches integration issues early.",
+          "icon": "hub"
+        },
+        {
+          "title": "Plan in plain language",
+          "tip": "Get a written plan approved before any code is generated. Cheap to change text, expensive to change code.",
+          "icon": "draw"
+        },
+        {
+          "title": "Request a checklist",
+          "tip": "For complex tasks, ask Claude to generate a checklist first. Use it to track completion without re-explaining context.",
+          "icon": "checklist_rtl"
+        },
+        {
+          "title": "Separate design from implementation",
+          "tip": "Ask for schema or interface design in one message, implementation in the next. Each step stays focused.",
+          "icon": "layers"
+        },
+        {
+          "title": "Work top-down",
+          "tip": "Start with system design, then modules, then functions. Claude produces more coherent code with the big picture.",
+          "icon": "account_tree"
+        }
+      ]
+    },
+    {
+      "category": "Prompt engineering",
+      "entries": [
+        {
+          "title": "Add a persona",
+          "tip": "Assigning a role ('you are a senior security engineer') focuses Claude's vocabulary and priorities.",
+          "icon": "person"
+        },
+        {
+          "title": "Assign explicit constraints",
+          "tip": "Hard constraints beat soft ones. 'Do not use external libraries' is clearer than 'try to minimize dependencies'.",
+          "icon": "block"
+        },
+        {
+          "title": "Chain-of-thought for hard problems",
+          "tip": "Add 'think step by step' for math, logic, or planning tasks. Dramatically reduces errors on multi-step reasoning.",
+          "icon": "psychology_alt"
+        },
+        {
+          "title": "Few-shot examples work",
+          "tip": "Provide 2–3 input/output examples in your prompt for format-sensitive tasks. Better than describing the format in words.",
+          "icon": "format_quote"
+        },
+        {
+          "title": "Give negative examples too",
+          "tip": "Show Claude what you don't want alongside what you do. Reduces the chance of drifting toward common but wrong patterns.",
+          "icon": "do_not_disturb"
+        },
+        {
+          "title": "Ground with real data",
+          "tip": "Paste in real filenames, real error messages, real schema names. Specificity dramatically improves quality.",
+          "icon": "pin_drop"
+        },
+        {
+          "title": "Separate context from instruction",
+          "tip": "Use clear delimiters (e.g. <doc>...</doc>) to separate background context from the actual task.",
+          "icon": "segment"
+        },
+        {
+          "title": "Specify the audience",
+          "tip": "'Explain to a junior developer' vs. 'explain to a principal engineer' yields very different, more useful answers.",
+          "icon": "group"
+        },
+        {
+          "title": "Temperature via words",
+          "tip": "Say 'be creative and explore unusual options' or 'be conservative and follow best practices' instead of adjusting sliders.",
+          "icon": "tune"
+        },
+        {
+          "title": "Use XML for structure",
+          "tip": "Wrapping context in XML tags (<instructions>, <context>, <examples>) produces more reliable parsing by Claude.",
+          "icon": "code"
+        }
+      ]
+    },
+    {
+      "category": "Research & writing",
+      "entries": [
+        {
+          "title": "Ask for citations",
+          "tip": "For research tasks, ask Claude to include citations or note when it's uncertain. Reduces hallucination risk.",
+          "icon": "menu_book"
+        },
+        {
+          "title": "Draft then refine",
+          "tip": "Get a rough draft first, then ask for targeted rewrites. Cheaper than generating polished prose in one shot.",
+          "icon": "brush"
+        },
+        {
+          "title": "Give a word count",
+          "tip": "Specify 'about 200 words' or 'at least 400 words'. Vague length requests produce wildly inconsistent output.",
+          "icon": "format_size"
+        },
+        {
+          "title": "Request an outline first",
+          "tip": "For long documents, get an outline approved before generating full content. Prevents wasted prose.",
+          "icon": "format_list_bulleted"
+        },
+        {
+          "title": "Set the reading level",
+          "tip": "'Write at a 5th grade reading level' or 'assume PhD-level reader' tunes vocabulary and sentence complexity.",
+          "icon": "school"
+        },
+        {
+          "title": "Specify tone explicitly",
+          "tip": "'Formal', 'conversational', 'technical', 'enthusiastic' — tone words do more work than vague quality adjectives.",
+          "icon": "record_voice_over"
+        },
+        {
+          "title": "Summarize long docs first",
+          "tip": "Paste a long document and ask for a summary before asking specific questions. Orients Claude to the material.",
+          "icon": "summarize"
+        }
+      ]
+    },
+    {
+      "category": "Security & safety",
+      "entries": [
+        {
+          "title": "Audit Claude's code",
+          "tip": "Treat Claude-generated code as a junior dev's PR — review for security issues before merging to production.",
+          "icon": "security"
+        },
+        {
+          "title": "Never paste credentials",
+          "tip": "Scrub API keys, tokens, and passwords from any code before pasting into a chat prompt.",
+          "icon": "key_off"
+        },
+        {
+          "title": "Redact PII",
+          "tip": "Replace real names, emails, and personal data with placeholders before sharing logs or data files.",
+          "icon": "person_off"
+        },
+        {
+          "title": "Sanitize before paste",
+          "tip": "Strip internal URLs, hostnames, and internal identifiers from prompts shared in logged sessions.",
+          "icon": "cleaning_services"
+        },
+        {
+          "title": "Test in sandbox first",
+          "tip": "Run Claude-generated scripts in a sandbox or staging environment before touching production.",
+          "icon": "verified_user"
+        },
+        {
+          "title": "Validate external sources",
+          "tip": "If Claude fetches or references external data, verify URLs and sources before trusting the output.",
+          "icon": "fact_check"
+        }
+      ]
+    },
+    {
+      "category": "Session strategy",
+      "entries": [
+        {
+          "title": "Spread work sessions",
+          "tip": "Claude uses a rolling 5-hour window. Divide your work into morning, afternoon, and evening sessions to let your usage reset throughout the day.",
+          "icon": "schedule"
+        },
+        {
+          "title": "Work during off-peak",
+          "tip": "Perform resource-intensive tasks in the evening or on weekends. Usage limits may be consumed more quickly during peak hours (5 AM–11 AM PT).",
+          "icon": "schedule_send"
+        },
+        {
+          "title": "Early morning ping",
+          "tip": "Send a tiny message early in the morning (e.g., 6 AM) to start your rolling 5-hour window before you actually sit down to work.",
+          "icon": "notifications_active"
+        }
+      ]
+    },
+    {
+      "category": "Testing & quality",
+      "entries": [
+        {
+          "title": "Ask Claude to break its own code",
+          "tip": "After generating a function, ask Claude to list edge cases and failure modes it didn't handle.",
+          "icon": "sports_kabaddi"
+        },
+        {
+          "title": "Generate test cases separately",
+          "tip": "Ask for tests in a separate prompt from the implementation. Mixed prompts produce incomplete coverage.",
+          "icon": "quiz"
+        },
+        {
+          "title": "Mutation testing prompts",
+          "tip": "Ask Claude to deliberately introduce bugs, then fix them. Confirms your tests actually catch issues.",
+          "icon": "pest_control"
+        },
+        {
+          "title": "Request property-based tests",
+          "tip": "For data-heavy logic, ask for property-based tests (e.g. Hypothesis/fast-check). Finds edge cases automatically.",
+          "icon": "scatter_plot"
+        },
+        {
+          "title": "Review assertions explicitly",
+          "tip": "Ask Claude to explain why each assertion is correct. Surfaces wrong tests that pass for the wrong reason.",
+          "icon": "rate_review"
+        },
+        {
+          "title": "Test error paths",
+          "tip": "Ask specifically for tests that cover failure modes — not just the happy path.",
+          "icon": "warning"
+        }
+      ]
+    },
+    {
+      "category": "Workflows & integrations",
+      "entries": [
+        {
+          "title": "Chain outputs as inputs",
+          "tip": "Pass Claude's JSON output directly into the next prompt as structured input. Reduces re-typing and parsing errors.",
+          "icon": "repeat"
+        },
+        {
+          "title": "Create reusable templates",
+          "tip": "For recurring tasks (PR descriptions, changelogs, release notes), build fill-in-the-blank prompt templates.",
+          "icon": "document_scanner"
+        },
+        {
+          "title": "Integrate with your editor",
+          "tip": "Use Claude Code CLI or a VS Code extension so you can invoke Claude without switching windows.",
+          "icon": "integration_instructions"
+        },
+        {
+          "title": "Pipe CLI output directly",
+          "tip": "Redirect terminal output (logs, test results) directly into a Claude prompt with heredoc or piping.",
+          "icon": "terminal"
+        },
+        {
+          "title": "Use Projects for team context",
+          "tip": "Store shared system prompts, style guides, and codebase docs in a Project so the whole team stays aligned.",
+          "icon": "group_work"
+        },
+        {
+          "title": "Wire into CI",
+          "tip": "Use Claude API in CI to auto-generate PR summaries, flag risky diffs, or suggest test names for new functions.",
+          "icon": "merge"
+        }
+      ]
+    }
+  ]
+}
