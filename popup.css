@@ -3,11 +3,11 @@
 }
 
 :root {
-  --base-canvas: #191818;
-  --level-1: #2b2a2a;
-  --level-2: #383737;
+  --base-canvas: #262624;
+  --level-1: #ffffff05;
+  --level-2: #ffffff18;
   --primary-text: #ededed;
-  --secondary-text: #a0a0a0;
+  --secondary-text: rgb(156, 154, 146);
   --primary-action: #ffffff;
   --system-accent: #c66140;
 }
@@ -68,6 +68,7 @@ body {
 h1 {
   margin: 6px 0 0;
   font-family: "IBM Plex Serif", serif;
+  font-weight: 600;
   font-size: 20px;
   line-height: 1.1;
 }
@@ -159,6 +160,10 @@ h1 {
   background: var(--level-2);
 }
 
+.tip-trigger .material-icons-outlined {
+  color: var(--system-accent);
+}
+
 .tip-body-wrapper {
   display: grid;
   grid-template-rows: 0fr;
@@ -242,7 +247,7 @@ h1 {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  background: var(--level-2);
+  background: var(--base-canvas);
   border-radius: 14px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.48);
   z-index: 1000;
