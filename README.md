@@ -4,6 +4,8 @@
 
 A lightweight Chrome extension for Claude users who want to save tokens, sharpen prompts, and get quick guidance while working with Claude.
 
+![Claude Tips screenshot](icons/Claude_Tips.jpg)
+
 ## What it includes
 
 - A popup interface with categorized tips and a random tip mode
