@@ -2,11 +2,12 @@
 
 # Claude Tips
 
-A lightweight Chrome extension for Claude users who want to save tokens with cleaner workflows.
+A lightweight Chrome extension for Claude users who want to save tokens, sharpen prompts, and get quick guidance while working with Claude.
 
 ## What it includes
 
 - A tabbed popup with `Tokens` and `Tips`
+- A random tip mode for fresh guidance each time
 - Practical, minimal cost-saving rules from the Doobie transcript
 - Expandable, categorized guidance for chat discipline, measurement, model control, and session strategy
 - Material Design icon styling and a dark, calm UI
@@ -25,14 +26,6 @@ A lightweight Chrome extension for Claude users who want to save tokens with cle
 - Spread work across the day
 - Avoid peak hours whenever possible
 - Enable overage as a safety net
-
-## Build
-
-A signed Chrome extension package can be created with:
-
-```bash
-./build_crx.sh
-```
 
 ## Credit
 
