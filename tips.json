@@ -1,6 +1,10 @@
 {
   "categories": [
-    { "id": "tokens", "label": "Tokens", "icon": "toll" },
+    {
+      "id": "tokens",
+      "label": "Tokens",
+      "icon": "toll"
+    },
     {
       "id": "agentic-automation",
       "label": "Agentic & automation",
@@ -36,7 +40,11 @@
       "label": "Research & writing",
       "icon": "auto_stories"
     },
-    { "id": "security-safety", "label": "Security & safety", "icon": "shield" },
+    {
+      "id": "security-safety",
+      "label": "Security & safety",
+      "icon": "shield"
+    },
     {
       "id": "testing-quality",
       "label": "Testing & quality",
@@ -131,6 +139,35 @@
           "title": "Talk like a caveman",
           "tip": "Instruct Claude to drop the fluff and talk like a caveman. This can reduce output token consumption by up to 65%.",
           "icon": "history_edu"
+        },
+        {
+          "title": "Cache stable prefixes",
+          "tip": "For API workflows, put stable system instructions, tools, examples, and background context before the changing user request so prompt caching can reuse the shared prefix.",
+          "icon": "cached",
+          "source": "Anthropic prompt caching docs"
+        },
+        {
+          "title": "Keep changing data last",
+          "tip": "Place volatile inputs — the latest bug report, pasted diff, or question — after the reusable context. Stable-first ordering makes cached prompts more effective.",
+          "icon": "last_page",
+          "source": "Anthropic prompt caching docs"
+        },
+        {
+          "title": "Summarize huge tool output",
+          "tip": "When a command produces pages of logs, ask Claude to keep only the failing command, error block, environment, and next action. Raw repeated logs quickly bloat the chat.",
+          "icon": "summarize",
+          "source": "Anthropic context engineering"
+        },
+        {
+          "title": "Trim old screenshots",
+          "tip": "For UI work, replace old screenshots with a short visual summary once the issue is understood. Images can be expensive context if they stay in every turn.",
+          "icon": "image_not_supported"
+        },
+        {
+          "title": "Use explicit stop points",
+          "tip": "For long work, tell Claude exactly when to pause, summarize, or compact. This preserves the important state before the conversation gets heavy.",
+          "icon": "pause_circle",
+          "source": "Anthropic context engineering"
         }
       ]
     },
@@ -176,6 +213,32 @@
           "title": "Use structured output",
           "tip": "Ask for JSON or XML when the result feeds another process. Structured output is easier to parse and validate.",
           "icon": "data_object"
+        },
+        {
+          "title": "Give tool permissions by class",
+          "tip": "State which actions are safe automatically, which require confirmation, and which are forbidden. Agents behave better when permission boundaries are explicit.",
+          "icon": "admin_panel_settings"
+        },
+        {
+          "title": "Require a discovery pass",
+          "tip": "Before edits, ask Claude to inspect the repository, identify relevant files, and report the likely change surface. This prevents drive-by patches in the wrong module.",
+          "icon": "travel_explore",
+          "source": "Claude Code docs"
+        },
+        {
+          "title": "Ask for checkpoints",
+          "tip": "For multi-file changes, have Claude stop after each meaningful checkpoint with what changed, what passed, and what remains.",
+          "icon": "flag"
+        },
+        {
+          "title": "Separate read and write phases",
+          "tip": "Tell Claude to read, analyze, and plan first, then edit only after the plan is coherent. This reduces accidental rewrites.",
+          "icon": "folder_open"
+        },
+        {
+          "title": "Make rollback easy",
+          "tip": "Ask Claude to group changes so they can be reverted cleanly. Small reversible steps are safer than one giant agentic sweep.",
+          "icon": "undo"
         }
       ]
     },
@@ -227,6 +290,34 @@
           "title": "Upload recurring files",
           "tip": "Put repeated documents in Projects once. Cached content avoids repeated retokenization.",
           "icon": "folder_shared"
+        },
+        {
+          "title": "Preserve decisions in compaction",
+          "tip": "When compacting, specifically preserve architectural decisions, unresolved bugs, chosen constraints, and file paths. These are the details most painful to rediscover.",
+          "icon": "bookmark",
+          "source": "Anthropic context engineering"
+        },
+        {
+          "title": "Discard raw tool noise",
+          "tip": "After a tool result has served its purpose, summarize the useful conclusion and remove or ignore the raw output. The conclusion matters more than the scrollback.",
+          "icon": "filter_alt",
+          "source": "Anthropic context engineering"
+        },
+        {
+          "title": "Keep a living project brief",
+          "tip": "Maintain a short project brief with goals, constraints, commands, and current status. Point Claude to that instead of re-explaining the project every session.",
+          "icon": "article"
+        },
+        {
+          "title": "Pin current files",
+          "tip": "Name the few files currently in play and why they matter. Claude performs better when the active working set is obvious.",
+          "icon": "push_pin"
+        },
+        {
+          "title": "Compress before task switching",
+          "tip": "Before jumping from implementation to docs or design, ask for a state summary. Topic switches are where context loss gets sneaky.",
+          "icon": "swap_horiz",
+          "source": "Anthropic context engineering"
         }
       ]
     },
@@ -288,6 +379,31 @@
           "tip": "Use Plan Mode to avoid wasted tokens on incorrect directions.",
           "icon": "edit_calendar",
           "source": "Stop Wasting Your Claude Tokens. Do This Instead... by Rick Mulready"
+        },
+        {
+          "title": "Ask for codebase conventions",
+          "tip": "Before generating code, ask Claude to infer naming, error handling, formatting, and file organization from nearby files.",
+          "icon": "format_align_left"
+        },
+        {
+          "title": "Prefer narrow file edits",
+          "tip": "Tell Claude the exact file or function to modify when possible. Narrow targets reduce hallucinated helpers and unnecessary rewrites.",
+          "icon": "my_location"
+        },
+        {
+          "title": "Request command-ready output",
+          "tip": "Ask Claude to include the exact test, build, or lint commands it expects you to run after the change.",
+          "icon": "terminal"
+        },
+        {
+          "title": "Give acceptance examples",
+          "tip": "For UI or API behavior, provide one accepted example and one rejected example. Claude can match concrete behavior better than vibes.",
+          "icon": "rule"
+        },
+        {
+          "title": "Mark generated sections",
+          "tip": "When Claude creates boilerplate, ask it to mark generated sections clearly. Future edits become easier and safer.",
+          "icon": "data_object"
         }
       ]
     },
@@ -328,6 +444,31 @@
           "title": "Request root cause first",
           "tip": "Ask 'What is causing this?' before 'Fix it'. Understanding the cause often reveals a better solution.",
           "icon": "travel_explore"
+        },
+        {
+          "title": "Ask for a failure tree",
+          "tip": "Have Claude list the top likely causes ranked by probability before changing code. Debugging becomes a search problem, not a guessing game.",
+          "icon": "account_tree"
+        },
+        {
+          "title": "Keep one variable moving",
+          "tip": "Ask Claude to change only one thing per experiment. Multiple simultaneous fixes make it impossible to know what worked.",
+          "icon": "looks_one"
+        },
+        {
+          "title": "Capture the exact command",
+          "tip": "Paste the command that produced the error, not just the error. Flags, working directory, and shell matter.",
+          "icon": "terminal"
+        },
+        {
+          "title": "Compare expected paths",
+          "tip": "When files are missing or imports fail, ask Claude to trace expected path vs. actual path before editing.",
+          "icon": "route"
+        },
+        {
+          "title": "Log before rewriting",
+          "tip": "Ask Claude to add temporary targeted logs before proposing a large refactor. Observation beats heroic surgery.",
+          "icon": "receipt_long"
         }
       ]
     },
@@ -373,6 +514,31 @@
           "title": "Work top-down",
           "tip": "Start with system design, then modules, then functions. Claude produces more coherent code with the big picture.",
           "icon": "account_tree"
+        },
+        {
+          "title": "Ask for non-goals",
+          "tip": "Have Claude list what the system will not do. Non-goals prevent scope creep and make architecture sharper.",
+          "icon": "block"
+        },
+        {
+          "title": "Define ownership boundaries",
+          "tip": "Ask Claude to specify which module owns each responsibility. Blurry ownership causes tangled code later.",
+          "icon": "account_tree"
+        },
+        {
+          "title": "Document invariants",
+          "tip": "Ask for the rules that must always remain true, such as data ordering, identity stability, or threading constraints.",
+          "icon": "verified"
+        },
+        {
+          "title": "Request migration steps",
+          "tip": "For refactors, ask Claude to design a safe migration path from the current system to the desired system.",
+          "icon": "moving"
+        },
+        {
+          "title": "Include failure modes",
+          "tip": "Ask Claude how the design fails under load, bad data, network loss, or partial writes before implementation begins.",
+          "icon": "warning"
         }
       ]
     },
@@ -428,6 +594,31 @@
           "title": "Use XML for structure",
           "tip": "Wrapping context in XML tags (<instructions>, <context>, <examples>) produces more reliable parsing by Claude.",
           "icon": "code"
+        },
+        {
+          "title": "Use task brackets",
+          "tip": "Wrap instructions, context, examples, and output format in separate tags so Claude does not confuse background material with the actual request.",
+          "icon": "segment"
+        },
+        {
+          "title": "Tell Claude what to ignore",
+          "tip": "If pasted context includes outdated plans or irrelevant logs, explicitly mark them as reference-only or deprecated.",
+          "icon": "visibility_off"
+        },
+        {
+          "title": "Put the ask last",
+          "tip": "For long prompts, end with a short, explicit task statement. Claude is less likely to miss the real job.",
+          "icon": "south"
+        },
+        {
+          "title": "Request uncertainty labels",
+          "tip": "Ask Claude to mark guesses, assumptions, and verified facts separately when accuracy matters.",
+          "icon": "help"
+        },
+        {
+          "title": "Use reusable prompt shells",
+          "tip": "Create templates with slots for context, constraints, examples, and output format. Consistent structure gives more consistent answers.",
+          "icon": "dynamic_form"
         }
       ]
     },
@@ -468,6 +659,31 @@
           "title": "Summarize long docs first",
           "tip": "Paste a long document and ask for a summary before asking specific questions. Orients Claude to the material.",
           "icon": "summarize"
+        },
+        {
+          "title": "Ask for source tiers",
+          "tip": "Tell Claude which sources count as primary, secondary, or unacceptable. This keeps research from leaning on weak summaries.",
+          "icon": "grading"
+        },
+        {
+          "title": "Separate facts from synthesis",
+          "tip": "Ask Claude to list sourced facts first, then analysis. This makes it easier to spot unsupported leaps.",
+          "icon": "fact_check"
+        },
+        {
+          "title": "Request quote limits",
+          "tip": "For copyrighted or sensitive sources, ask for brief quotes plus paraphrase. You get evidence without turning the answer into a copied article.",
+          "icon": "format_quote"
+        },
+        {
+          "title": "Give a publication target",
+          "tip": "Say whether the output is for an email, blog post, investor memo, support reply, or technical doc. Claude will choose a better structure.",
+          "icon": "article"
+        },
+        {
+          "title": "Ask for revision notes",
+          "tip": "After a rewrite, ask Claude to summarize what changed and why. This makes editing feel intentional instead of mysterious.",
+          "icon": "rate_review"
         }
       ]
     },
@@ -503,6 +719,31 @@
           "title": "Validate external sources",
           "tip": "If Claude fetches or references external data, verify URLs and sources before trusting the output.",
           "icon": "fact_check"
+        },
+        {
+          "title": "Use least privilege prompts",
+          "tip": "For agentic coding, grant only the minimum commands and folders needed for the task. Broad permission invites accidental damage.",
+          "icon": "lock"
+        },
+        {
+          "title": "Block secret exfiltration",
+          "tip": "Tell Claude never to print, summarize, or transmit secret-looking values from env files, logs, or config.",
+          "icon": "key_off"
+        },
+        {
+          "title": "Review dependency changes",
+          "tip": "Ask Claude to justify new dependencies and flag license, maintenance, and supply-chain concerns before adding them.",
+          "icon": "inventory"
+        },
+        {
+          "title": "Prefer dry-run commands",
+          "tip": "Use dry-run, preview, or no-write flags before allowing scripts to modify files or infrastructure.",
+          "icon": "preview"
+        },
+        {
+          "title": "Use disposable worktrees",
+          "tip": "Run risky Claude Code experiments in a fresh branch, worktree, container, or sandbox so mistakes are isolated.",
+          "icon": "science"
         }
       ]
     },
@@ -538,6 +779,31 @@
           "title": "Test error paths",
           "tip": "Ask specifically for tests that cover failure modes — not just the happy path.",
           "icon": "warning"
+        },
+        {
+          "title": "Ask for test intent",
+          "tip": "Have Claude explain what each test proves before writing the test body. Intent-first tests are less brittle.",
+          "icon": "psychology"
+        },
+        {
+          "title": "Run smallest tests first",
+          "tip": "Ask Claude to identify the fastest targeted test command before running the full suite.",
+          "icon": "speed"
+        },
+        {
+          "title": "Add regression tests",
+          "tip": "When fixing a bug, require a test that fails before the fix and passes after it.",
+          "icon": "history"
+        },
+        {
+          "title": "Check generated tests for tautologies",
+          "tip": "Ask Claude to make sure tests do not simply duplicate the implementation logic. Tests should verify behavior, not mirror code.",
+          "icon": "rule"
+        },
+        {
+          "title": "Ask for quality gates",
+          "tip": "Define the exact checks required before calling work done: tests, lint, typecheck, build, docs, or manual QA.",
+          "icon": "verified"
         }
       ]
     },
@@ -573,6 +839,33 @@
           "title": "Wire into CI",
           "tip": "Use Claude API in CI to auto-generate PR summaries, flag risky diffs, or suggest test names for new functions.",
           "icon": "merge"
+        },
+        {
+          "title": "Connect Claude to the repo",
+          "tip": "Use Claude Code in the terminal or IDE when the task requires reading and editing multiple files. Copy-paste chat is better for small, isolated questions.",
+          "icon": "integration_instructions",
+          "source": "Claude Code docs"
+        },
+        {
+          "title": "Automate release notes",
+          "tip": "Feed merged commits or PR summaries into Claude and ask for customer-facing release notes plus developer changelog bullets.",
+          "icon": "new_releases",
+          "source": "Claude Code docs"
+        },
+        {
+          "title": "Create handoff packets",
+          "tip": "At the end of a session, ask Claude for a handoff containing status, changed files, commands run, open risks, and next steps.",
+          "icon": "assignment"
+        },
+        {
+          "title": "Use issue-shaped prompts",
+          "tip": "Write prompts like tickets: problem, context, constraints, acceptance criteria, and verification plan.",
+          "icon": "task"
+        },
+        {
+          "title": "Keep integrations visible",
+          "tip": "List which tools Claude may use — editor, terminal, GitHub, CI, browser, docs — so it chooses the right workflow instead of guessing.",
+          "icon": "device_hub"
         }
       ]
     }
