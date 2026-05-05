@@ -239,6 +239,18 @@
           "title": "Make rollback easy",
           "tip": "Ask Claude to group changes so they can be reverted cleanly. Small reversible steps are safer than one giant agentic sweep.",
           "icon": "undo"
+        },
+        {
+          "title": "Keep stateful stages rare",
+          "tip": "Use a persistent SDK session only where prior turns matter. Run independent stages as fresh queries to avoid conversational residue.",
+          "icon": "call_split",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Control the event stream",
+          "tip": "Treat session events as the control plane. Watch idle states, stop reasons, and required actions instead of relying only on final text.",
+          "icon": "schema",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -318,6 +330,24 @@
           "tip": "Before jumping from implementation to docs or design, ask for a state summary. Topic switches are where context loss gets sneaky.",
           "icon": "swap_horiz",
           "source": "Anthropic context engineering"
+        },
+        {
+          "title": "Separate memory policy",
+          "tip": "Put what belongs in memory in the store description. Put how to use it this session in the session instructions.",
+          "icon": "memory",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Thread equals session",
+          "tip": "For chat bots, map each thread ID to one session ID. Replies in the same thread keep conversation and filesystem context together.",
+          "icon": "forum",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Attach memory early",
+          "tip": "Memory stores must be attached when the session starts. Files can be added later, so design memory as early-bound context.",
+          "icon": "memory_alt",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -404,6 +434,18 @@
           "title": "Mark generated sections",
           "tip": "When Claude creates boilerplate, ask it to mark generated sections clearly. Future edits become easier and safer.",
           "icon": "data_object"
+        },
+        {
+          "title": "Make reporting tool-free",
+          "tip": "After triage, stop using tools and generate strict structured output. Required fields and nulls make downstream parsing safer.",
+          "icon": "data_object",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Fragment Plotly charts",
+          "tip": "For multi-chart HTML reports, export Plotly fragments and load Plotly once in the head. Avoid duplicate JavaScript per chart.",
+          "icon": "insert_chart",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -539,6 +581,30 @@
           "title": "Include failure modes",
           "tip": "Ask Claude how the design fails under load, bad data, network loss, or partial writes before implementation begins.",
           "icon": "warning"
+        },
+        {
+          "title": "Layer tools by trust",
+          "tip": "Use sandbox tools for local work, Skills for team conventions, and custom tools only for external side effects.",
+          "icon": "layers",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Keep agents reusable",
+          "tip": "Put the repeatable workflow in the agent. Send the current alert, dataset, or request as session data instead.",
+          "icon": "hub",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Separate durable resources",
+          "tip": "Treat agents, environments, and memory stores as reusable definitions. Treat sessions as disposable per-task runtimes.",
+          "icon": "account_tree",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Make paths contracts",
+          "tip": "Use stable paths for memory, inputs, and outputs. Filesystem layout becomes the contract between agent and app.",
+          "icon": "folder_special",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -619,6 +685,12 @@
           "title": "Use reusable prompt shells",
           "tip": "Create templates with slots for context, constraints, examples, and output format. Consistent structure gives more consistent answers.",
           "icon": "dynamic_form"
+        },
+        {
+          "title": "Prompt the workflow only",
+          "tip": "Keep the system prompt generic. Send incident-specific or user-specific details as the first user event.",
+          "icon": "hub",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -744,6 +816,36 @@
           "title": "Use disposable worktrees",
           "tip": "Run risky Claude Code experiments in a fresh branch, worktree, container, or sandbox so mistakes are isolated.",
           "icon": "science"
+        },
+        {
+          "title": "Do not trust allowed_tools",
+          "tip": "In the Agent SDK, allowed_tools auto-approves tools; it is not a hard whitelist. Use disallowed_tools for real denial.",
+          "icon": "rule",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Keep reference memory read-only",
+          "tip": "Use read-write memory for user preferences only. Attach shared reference material as read-only to avoid memory poisoning.",
+          "icon": "shield",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Approve only the merge",
+          "tip": "Let agents investigate and prepare changes freely. Put the human checkpoint at the irreversible merge or deploy boundary.",
+          "icon": "approval",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Limit container networking",
+          "tip": "Disabling web_search is not sandbox isolation. Use limited networking and explicit allowed hosts for production agents.",
+          "icon": "public_off",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Deny explicitly",
+          "tip": "When a tool must never run, deny it explicitly. Do not assume omission from auto-approved tools blocks access.",
+          "icon": "block",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -804,6 +906,24 @@
           "title": "Ask for quality gates",
           "tip": "Define the exact checks required before calling work done: tests, lint, typecheck, build, docs, or manual QA.",
           "icon": "verified"
+        },
+        {
+          "title": "Use a triage pass",
+          "tip": "Find issues first, then re-judge them in a fresh pass. Re-check source lines, merge duplicates, and recompute severity.",
+          "icon": "filter_alt",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Analyze with code first",
+          "tip": "For data work, make Claude write scripts, sample tables, and sanity-check metrics before writing the narrative.",
+          "icon": "query_stats",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Rubric before review",
+          "tip": "Give the finder a quality rubric before it searches. It should know which findings are real and which are noise.",
+          "icon": "fact_check",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     },
@@ -866,6 +986,48 @@
           "title": "Keep integrations visible",
           "tip": "List which tools Claude may use — editor, terminal, GitHub, CI, browser, docs — so it chooses the right workflow instead of guessing.",
           "icon": "device_hub"
+        },
+        {
+          "title": "Memory is product state",
+          "tip": "Persist a user-to-store mapping in your app. Seed memory from product data and expose a review surface for corrections.",
+          "icon": "database",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Webhook required actions",
+          "tip": "Use a session.requires_action webhook in production. Polling notebooks are fine for demos, not deployed approvals.",
+          "icon": "webhook",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Preload the environment",
+          "tip": "Install common packages in the environment definition. Cached dependencies make sessions faster and more reproducible.",
+          "icon": "speed",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Write outputs deliberately",
+          "tip": "Put final deliverables in /mnt/session/outputs/. Treat every other path as scratch unless your app owns it.",
+          "icon": "save_alt",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Reuse bot resources",
+          "tip": "Persist environment ID, agent ID, and agent version. Reuse them for every mention instead of rebuilding per request.",
+          "icon": "replay",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Ack chat events first",
+          "tip": "Acknowledge chat platform events immediately. Do file uploads, session creation, and stream relay in background work.",
+          "icon": "bolt",
+          "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Post only downloads",
+          "tip": "When listing session files, filter for downloadable outputs before reposting results back into chat.",
+          "icon": "attach_file",
+          "source": "Claude Cookbook deep research, batch 1"
         }
       ]
     }

@@ -332,7 +332,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 40px;
   height: 40px;
   border: none;
   border-radius: 10px;
@@ -365,6 +365,10 @@ h1 {
 
 .header-buttons button .material-icons-outlined {
   font-size: 20px;
+}
+
+.filter-button {
+  width: 100% !important;
 }
 
 .filter-menu {
