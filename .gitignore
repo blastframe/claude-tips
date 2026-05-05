@@ -5,4 +5,4 @@ dist/
 *.bin
 *.crx
 *.pem
-build_crx.sh
+build_extension.sh
