@@ -1,9 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Claude Tips",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Practical Claude token-saving rules based on Doobie’s 11-step usage-limit workflow.",
-  "permissions": ["tabs"],
+  "permissions": [
+    "tabs"
+  ],
   "background": {
     "service_worker": "background.js"
   },
