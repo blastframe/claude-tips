@@ -29,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  border-radius: 18px;
 }
 
 .header {
@@ -501,6 +502,11 @@ h1 {
   color: var(--secondary-text);
   line-height: 1.6;
   white-space: pre-wrap;
+  transition: color 0.2s ease;
+}
+
+.random-tip-body:hover {
+  color: var(--primary-text);
 }
 
 .random-tip-actions {
