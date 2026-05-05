@@ -6,8 +6,7 @@ A lightweight Chrome extension for Claude users who want to save tokens, sharpen
 
 ## What it includes
 
-- A tabbed popup with `Tokens` and `Tips`
-- A random tip mode for fresh guidance each time
+- A popup interface with categorized tips and a random tip mode
 - Practical, minimal cost-saving rules from the Doobie transcript
 - Expandable, categorized guidance for chat discipline, measurement, model control, and session strategy
 - Material Design icon styling and a dark, calm UI

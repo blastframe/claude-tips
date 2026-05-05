@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const contentArea = document.querySelector(".content-area");
   const filterOptions = document.querySelector(".filter-options");
   const filterContainer = document.querySelector(".filter-container");
-  const filterToggle = document.querySelector(".filter-toggle");
   const filterMenu = document.querySelector(".filter-menu");
-  const randomModeToggle = document.querySelector(".random-mode-toggle");
-  const newTipButton = document.querySelector(".new-tip-button");
+  const randomModeButton = document.querySelector(".random-mode-button");
+  const modeActionButton = document.querySelector(".mode-action-button");
+  const docButton = document.querySelector(".doc-button");
   const filterMenuHeader = filterMenu.querySelector(".filter-menu-header");
 
   function loadSettings() {
@@ -320,19 +320,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     filterOptions.appendChild(button);
   });
 
-  randomModeToggle.addEventListener("click", () => {
-    mode = mode === "random" ? "category" : "random";
-    if (mode === "random") {
-      chooseRandomTip();
-    }
-    saveSettings();
-    renderContent();
-  });
-
-  if (newTipButton) {
-    newTipButton.addEventListener("click", () => {
-      chooseRandomTip();
+  if (randomModeButton) {
+    randomModeButton.addEventListener("click", () => {
+      mode = mode === "random" ? "category" : "random";
+      if (mode === "random") {
+        chooseRandomTip();
+      }
+      saveSettings();
       renderContent();
+    });
+  }
+
+  if (modeActionButton) {
+    modeActionButton.addEventListener("click", () => {
+      if (mode === "random") {
+        chooseRandomTip();
+        renderContent();
+      } else {
+        filterMenu.classList.toggle("visible");
+      }
+    });
+  }
+
+  if (docButton) {
+    docButton.addEventListener("click", () => {
+      window.open("https://platform.claude.com/docs/", "_blank");
     });
   }
 
@@ -346,19 +358,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
-    if (!filterContainer.contains(e.target)) {
+    if (
+      !filterContainer.contains(e.target) &&
+      (!modeActionButton || !modeActionButton.contains(e.target)) &&
+      e.target !== modeActionButton
+    ) {
       filterMenu.classList.remove("visible");
     }
   });
 
   function updateFilterMenuState() {
-    filterMenuHeader.textContent =
-      mode === "random" ? "Random tip mode" : "Filter by category";
-    randomModeToggle.classList.toggle("active", mode === "random");
+    filterMenuHeader.style.display = mode === "random" ? "none" : "block";
+    randomModeButton.classList.toggle("active", mode === "random");
     filterOptions.style.display = mode === "random" ? "none" : "flex";
+    filterMenu.classList.remove("visible");
 
-    if (newTipButton) {
-      newTipButton.style.display = mode === "random" ? "inline-flex" : "none";
+    if (modeActionButton) {
+      const icon = modeActionButton.querySelector(".material-icons-outlined");
+      if (mode === "random") {
+        icon.textContent = "autorenew";
+        modeActionButton.title = "Next tip";
+        modeActionButton.setAttribute("aria-label", "Next tip");
+      } else {
+        icon.textContent = "tune";
+        modeActionButton.title = "Filter categories";
+        modeActionButton.setAttribute("aria-label", "Filter categories");
+      }
     }
   }
 
