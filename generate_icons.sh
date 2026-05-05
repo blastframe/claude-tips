@@ -1,18 +1,20 @@
 #!/bin/bash
 
 # Define paths
-TARGET_DIR="/Users/kevincburke/Documents/GitHub/claude-tips/icons"
+SCRIPT_DIR="/Users/kevincburke/Documents/GitHub/claude-tips/"
+SOURCE_DIR="$SCRIPT_DIR/images"
+ICONS_DIR="$SCRIPT_DIR/icons"
 SIZES=(16 32 48 128)
 FILES=("claude-tips" "claude-tips-disabled")
 
 # Create icons directory if it doesn't exist
-mkdir -p "$TARGET_DIR"
+mkdir -p "$ICONS_DIR"
 
 # Loop through each SVG file and size
 for file in "${FILES[@]}"; do
     for size in "${SIZES[@]}"; do
-        SOURCE_PATH="$TARGET_DIR/$file.svg"
-        OUTPUT_PATH="$TARGET_DIR/$file-$size.png"
+        SOURCE_PATH="$SOURCE_DIR/$file.svg"
+        OUTPUT_PATH="$ICONS_DIR/$file-$size.png"
         
         echo "Generating $OUTPUT_PATH..."
         
@@ -24,4 +26,4 @@ for file in "${FILES[@]}"; do
     done
 done
 
-echo "Done! Icons are in the $TARGET_DIR folder."
+echo "Done! Icons are in the $ICONS_DIR folder."
