@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const filterToggle = document.querySelector(".filter-toggle");
   const filterMenu = document.querySelector(".filter-menu");
   const randomModeToggle = document.querySelector(".random-mode-toggle");
+  const newTipButton = document.querySelector(".new-tip-button");
   const filterMenuHeader = filterMenu.querySelector(".filter-menu-header");
 
   function loadSettings() {
@@ -96,6 +97,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (saved.currentTipIndex !== undefined && saved.currentTipIndex !== null) {
       currentTipIndex = saved.currentTipIndex;
     }
+
+    if (mode === "random") {
+      chooseRandomTip();
+    }
   }
 
   function renderContent() {
@@ -109,6 +114,53 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     updateFilterMenuState();
     updateFilterButtons();
+  }
+
+  function createCopyButton(getCopyText) {
+    const button = document.createElement("button");
+    button.className = "copy-button";
+    button.type = "button";
+    button.setAttribute("aria-label", "Copy tip to clipboard");
+
+    const icon = document.createElement("span");
+    icon.className = "material-icons-outlined";
+    icon.textContent = "content_copy";
+
+    button.appendChild(icon);
+
+    button.addEventListener("click", async (event) => {
+      event.stopPropagation();
+      const text =
+        typeof getCopyText === "function" ? getCopyText() : getCopyText;
+
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.style.position = "fixed";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.focus();
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+        }
+      } catch (error) {
+        console.warn("Clipboard copy failed", error);
+      }
+
+      button.classList.add("copied");
+      icon.textContent = "check";
+
+      window.setTimeout(() => {
+        button.classList.remove("copied");
+        icon.textContent = "content_copy";
+      }, 1000);
+    });
+
+    return button;
   }
 
   function renderCategoryList() {
@@ -145,9 +197,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         body.className = "tip-body";
         body.textContent = entry.tip;
 
+        const copyButton = createCopyButton(() => entry.tip);
+        copyButton.classList.add("tip-copy-button");
+
         bodyWrapper.appendChild(body);
         tipItem.appendChild(trigger);
         tipItem.appendChild(bodyWrapper);
+        tipItem.appendChild(copyButton);
 
         trigger.addEventListener("click", () => {
           const isExpanded = tipItem.classList.contains("expanded");
@@ -202,33 +258,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     body.className = "random-tip-body";
     body.textContent = tip.tip;
 
-    const actions = document.createElement("div");
-    actions.className = "random-tip-actions";
+    const copyButton = createCopyButton(() => tip.tip);
+    copyButton.classList.add("random-tip-copy-button");
 
-    const nextButton = document.createElement("button");
-    nextButton.className = "random-tip-button";
-    nextButton.type = "button";
-
-    const nextIcon = document.createElement("span");
-    nextIcon.className = "material-icons-outlined";
-    nextIcon.textContent = "autorenew";
-
-    const nextLabel = document.createElement("span");
-    nextLabel.textContent = "New tip";
-
-    nextButton.appendChild(nextIcon);
-    nextButton.appendChild(nextLabel);
-    nextButton.addEventListener("click", () => {
-      chooseRandomTip();
-      renderContent();
-    });
-
-    actions.appendChild(nextButton);
     card.appendChild(categoryHeading);
     card.appendChild(header);
+    card.appendChild(copyButton);
     card.appendChild(body);
     contentArea.appendChild(card);
-    contentArea.appendChild(actions);
   }
 
   function chooseRandomTip() {
@@ -292,6 +329,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderContent();
   });
 
+  if (newTipButton) {
+    newTipButton.addEventListener("click", () => {
+      chooseRandomTip();
+      renderContent();
+    });
+  }
+
   initState().then(renderContent);
 
   // Filter toggle
@@ -312,6 +356,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       mode === "random" ? "Random tip mode" : "Filter by category";
     randomModeToggle.classList.toggle("active", mode === "random");
     filterOptions.style.display = mode === "random" ? "none" : "flex";
+
+    if (newTipButton) {
+      newTipButton.style.display = mode === "random" ? "inline-flex" : "none";
+    }
   }
 
   function applyFilters() {
