@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tipCategories = data.tips.map((item) => item.category);
   const uniqueCategories = [...new Set(tipCategories)];
 
-  // Initialize filter state with all categories selected
-  let selectedCategories = new Set(uniqueCategories);
+  // Initialize filter state - null means show all categories
+  let selectedCategory = null;
 
   // Render all tips dynamically into the content area
   const contentArea = document.querySelector(".content-area");
@@ -78,17 +78,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     contentArea.appendChild(section);
   });
 
-  // Populate filter menu
+  // Populate filter menu with exclusive buttons
   uniqueCategories.forEach((categoryLabel) => {
     const categoryData = categoryMap[categoryLabel] || {};
-    const label = document.createElement("label");
-    label.className = "filter-option";
-
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.className = "filter-checkbox";
-    checkbox.value = categoryLabel;
-    checkbox.checked = true;
+    const button = document.createElement("button");
+    button.className = "filter-button";
+    button.dataset.category = categoryLabel;
 
     const iconSpan = document.createElement("span");
     iconSpan.className = "material-icons-outlined";
@@ -98,20 +93,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     labelText.className = "filter-label";
     labelText.textContent = categoryLabel;
 
-    label.appendChild(checkbox);
-    label.appendChild(iconSpan);
-    label.appendChild(labelText);
+    button.appendChild(iconSpan);
+    button.appendChild(labelText);
 
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
-        selectedCategories.add(categoryLabel);
+    button.addEventListener("click", () => {
+      // Toggle: if this category is selected, deselect it (show all)
+      // Otherwise, select only this category
+      if (selectedCategory === categoryLabel) {
+        selectedCategory = null;
       } else {
-        selectedCategories.delete(categoryLabel);
+        selectedCategory = categoryLabel;
       }
+
+      // Update button states
+      document.querySelectorAll(".filter-button").forEach((btn) => {
+        if (btn.dataset.category === selectedCategory) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+
       applyFilters();
     });
 
-    filterOptions.appendChild(label);
+    filterOptions.appendChild(button);
   });
 
   // Filter toggle
@@ -135,7 +141,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const header = category.querySelector(".category-header");
       const categoryName = header.textContent;
 
-      if (selectedCategories.has(categoryName)) {
+      // Show all if no filter, or show only the selected category
+      if (selectedCategory === null || categoryName === selectedCategory) {
         category.style.display = "block";
       } else {
         category.style.display = "none";
