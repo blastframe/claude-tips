@@ -30,8 +30,13 @@ A lightweight Chrome extension for Claude users who want to save tokens, sharpen
 
 ## Credit
 
-Based on the video:
+Citations for some of the tips and rules included in this:
 
-"Never hit Claudes Usage Limit Again" by Dubibubii
-
-https://www.youtube.com/watch?v=2f7ZkImNHFo
+- "Never hit Claudes Usage Limit Again" by Dubibubii
+  https://www.youtube.com/watch?v=2f7ZkImNHFo
+- "Stop Wasting Your Claude Tokens. Do This Instead..." by Rick Mulready
+  https://www.youtube.com/watch?v=riN4S9AoaB0
+- "7 Secret Prompts That Make Claude 10x Better" by Sabrina Ramonov
+  https://www.youtube.com/watch?v=rabGqnyd_Zw
+- "12 Ways to Use Claude So Well It Feels Illegal (Tutorial)" by Sabrina Ramonov
+  https://www.youtube.com/watch?v=L2CXXmDG-mM
