@@ -22,15 +22,20 @@ function updateActionIcon(tabId) {
   }
 
   chrome.tabs.get(tabId, (tab) => {
-    if (chrome.runtime.lastError || !tab || !tab.url) {
-      chrome.action.setIcon({ tabId, path: DISABLED_ICON_PATHS });
+    if (chrome.runtime.lastError || !tab) {
       return;
     }
 
-    const path = isClaudeUrl(tab.url)
-      ? ENABLED_ICON_PATHS
-      : DISABLED_ICON_PATHS;
-    chrome.action.setIcon({ tabId, path });
+    const path =
+      !tab.url || !isClaudeUrl(tab.url)
+        ? DISABLED_ICON_PATHS
+        : ENABLED_ICON_PATHS;
+
+    chrome.action.setIcon({ tabId, path }, () => {
+      if (chrome.runtime.lastError) {
+        // Ignore tab-specific icon failures for stale tab IDs.
+      }
+    });
   });
 }
 
