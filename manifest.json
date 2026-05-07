@@ -1,9 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Claude Tips",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Learn to save tokens and prompt Claude better from your browser.",
-  "permissions": ["tabs"],
+  "permissions": [
+    "tabs"
+  ],
   "background": {
     "service_worker": "background.js"
   },
