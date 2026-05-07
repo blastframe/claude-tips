@@ -16,40 +16,85 @@ function isClaudeUrl(url) {
   return typeof url === "string" && url.toLowerCase().includes("claude");
 }
 
-function updateActionIcon(tabId) {
-  if (typeof tabId !== "number") {
-    return;
-  }
-
-  chrome.tabs.get(tabId, (tab) => {
-    if (chrome.runtime.lastError || !tab) {
-      return;
-    }
-
-    const path =
-      !tab.url || !isClaudeUrl(tab.url)
-        ? DISABLED_ICON_PATHS
-        : ENABLED_ICON_PATHS;
-
-    chrome.action.setIcon({ tabId, path }, () => {
-      if (chrome.runtime.lastError) {
-        // Ignore tab-specific icon failures for stale tab IDs.
+function getTabById(tabId) {
+  return new Promise((resolve) => {
+    chrome.tabs.get(tabId, (tab) => {
+      if (chrome.runtime.lastError || !tab) {
+        resolve(null);
+        return;
       }
+
+      resolve(tab);
     });
   });
 }
 
-function refreshActiveTabIcon() {
-  chrome.windows.getCurrent({ populate: true }, (window) => {
-    if (chrome.runtime.lastError || !window || !window.tabs) {
-      return;
-    }
+function setTabIcon(tabId, path) {
+  return new Promise((resolve) => {
+    chrome.action.setIcon({ tabId, path }, () => {
+      if (chrome.runtime.lastError) {
+        // Ignore tab-specific icon failures for stale tab IDs.
+      }
 
-    const activeTab = window.tabs.find((tab) => tab.active);
-    if (activeTab) {
-      updateActionIcon(activeTab.id);
-    }
+      resolve();
+    });
   });
+}
+
+function getWindow(windowId, options) {
+  return new Promise((resolve) => {
+    chrome.windows.get(windowId, options, (window) => {
+      if (chrome.runtime.lastError || !window) {
+        resolve(null);
+        return;
+      }
+
+      resolve(window);
+    });
+  });
+}
+
+function getCurrentWindow(options) {
+  return new Promise((resolve) => {
+    chrome.windows.getCurrent(options, (window) => {
+      if (chrome.runtime.lastError || !window) {
+        resolve(null);
+        return;
+      }
+
+      resolve(window);
+    });
+  });
+}
+
+async function updateActionIcon(tabId) {
+  if (typeof tabId !== "number") {
+    return;
+  }
+
+  const tab = await getTabById(tabId);
+  if (!tab) {
+    return;
+  }
+
+  const path =
+    !tab.url || !isClaudeUrl(tab.url)
+      ? DISABLED_ICON_PATHS
+      : ENABLED_ICON_PATHS;
+
+  await setTabIcon(tabId, path);
+}
+
+async function refreshActiveTabIcon() {
+  const window = await getCurrentWindow({ populate: true });
+  if (!window || !window.tabs) {
+    return;
+  }
+
+  const activeTab = window.tabs.find((tab) => tab.active);
+  if (activeTab) {
+    await updateActionIcon(activeTab.id);
+  }
 }
 
 chrome.tabs.onActivated.addListener((activeInfo) => {
@@ -67,8 +112,8 @@ chrome.windows.onFocusChanged.addListener((windowId) => {
     return;
   }
 
-  chrome.windows.get(windowId, { populate: true }, (window) => {
-    if (chrome.runtime.lastError || !window || !window.tabs) {
+  getWindow(windowId, { populate: true }).then((window) => {
+    if (!window || !window.tabs) {
       return;
     }
 
