@@ -36,3 +36,4 @@ Citations for some of the tips and rules included in this:
 - ["Stop Wasting Your Claude Tokens. Do This Instead..."](https://www.youtube.com/watch?v=riN4S9AoaB0) by Rick Mulready
 - ["7 Secret Prompts That Make Claude 10x Better"](https://www.youtube.com/watch?v=rabGqnyd_Zw) by Sabrina Ramonov
 - ["12 Ways to Use Claude So Well It Feels Illegal (Tutorial)"](https://www.youtube.com/watch?v=L2CXXmDG-mM) by Sabrina Ramonov
+- ["32 Tricks to Level Up Claude Code in 16 Mins](https://www.youtube.com/watch?v=jqoFP9QapXI) by Nate Herk | AI Automation
