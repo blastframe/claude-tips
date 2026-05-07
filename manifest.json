@@ -2,10 +2,8 @@
   "manifest_version": 3,
   "name": "Claude Tips",
   "version": "1.0.16",
-  "description": "Practical Claude tips and best practices, just a click away.",
-  "permissions": [
-    "tabs"
-  ],
+  "description": "Learn to save tokens and prompt Claude better from your browser.",
+  "permissions": ["tabs"],
   "background": {
     "service_worker": "background.js"
   },
