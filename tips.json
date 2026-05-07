@@ -168,6 +168,11 @@
           "tip": "For long work, tell Claude exactly when to pause, summarize, or compact. This preserves the important state before the conversation gets heavy.",
           "icon": "pause_circle",
           "source": "Anthropic context engineering"
+        },
+        {
+          "title": "Use Haiku for sub-agents",
+          "tip": "Run simpler sub-agent tasks on the Haiku model while keeping the main session on a stronger model for final decisions.",
+          "icon": "auto_mode"
         }
       ]
     },
@@ -251,6 +256,21 @@
           "tip": "Treat session events as the control plane. Watch idle states, stop reasons, and required actions instead of relying only on final text.",
           "icon": "schema",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Deploy sub-agents for parallel work",
+          "tip": "Launch isolated sub-agents for independent research, tests, or drafts, then merge their findings into the main session.",
+          "icon": "groups"
+        },
+        {
+          "title": "Build custom skills",
+          "tip": "Create reusable skills or prompt files for common workflows so the same strategy works consistently across sessions.",
+          "icon": "extension"
+        },
+        {
+          "title": "Use agent teams",
+          "tip": "Use agents that can talk to each other and share a task list for more coherent parallel collaboration.",
+          "icon": "group"
         }
       ]
     },
@@ -348,6 +368,31 @@
           "tip": "Memory stores must be attached when the session starts. Files can be added later, so design memory as early-bound context.",
           "icon": "memory_alt",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Keep context small",
+          "tip": "Only give Claude the files and details needed for the current task. Smaller context windows reduce noise and improve response quality.",
+          "icon": "filter_alt"
+        },
+        {
+          "title": "Use /context to diagnose bloat",
+          "tip": "Run /context to see what is eating your token budget and rethink the prompt if system or file content is dominating.",
+          "icon": "insights"
+        },
+        {
+          "title": "Compact and clear regularly",
+          "tip": "Use /compact and /clear when your session feels bloated. Preserve important decisions, then reset the noisy history.",
+          "icon": "compress"
+        },
+        {
+          "title": "Refresh cloud.md often",
+          "tip": "Update your cloud.md whenever you discover new project conventions, patterns, or gotchas so the next session starts smarter.",
+          "icon": "update"
+        },
+        {
+          "title": "Route context from cloud.md",
+          "tip": "Keep cloud.md lean and point it to external style guides, docs, and reference files instead of putting everything in one place.",
+          "icon": "link"
         }
       ]
     },
@@ -605,6 +650,16 @@
           "tip": "Use stable paths for memory, inputs, and outputs. Filesystem layout becomes the contract between agent and app.",
           "icon": "folder_special",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Always start in plan mode",
+          "tip": "Use plan mode first to outline steps, ask questions, and map the approach before writing code.",
+          "icon": "checklist_rtl"
+        },
+        {
+          "title": "Use UltraThink for hard decisions",
+          "tip": "When the task is complex or uncertain, invoke UltraThink so Claude uses a larger reasoning budget before responding.",
+          "icon": "psychology_alt"
         }
       ]
     },
@@ -691,6 +746,26 @@
           "tip": "Keep the system prompt generic. Send incident-specific or user-specific details as the first user event.",
           "icon": "hub",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Treat Claude like a junior developer",
+          "tip": "Ask Claude to solve problems instead of only giving direct commands. Let it think through the approach and then review the assumptions.",
+          "icon": "person"
+        },
+        {
+          "title": "Make Claude ask questions",
+          "tip": "Tell Claude to ask clarifying questions until it is highly confident it understands the task. Alignment improves faster than guesswork.",
+          "icon": "question_answer"
+        },
+        {
+          "title": "Exit early and reask",
+          "tip": "If Claude starts down the wrong path, stop it and correct course immediately. Early redirection saves tokens and prevents wasted work.",
+          "icon": "restart_alt"
+        },
+        {
+          "title": "Challenge outputs aggressively",
+          "tip": "If the first result is just okay, ask for a more elegant or completely different approach. Higher standards lead to better revisions.",
+          "icon": "auto_awesome"
         }
       ]
     },
@@ -756,6 +831,11 @@
           "title": "Ask for revision notes",
           "tip": "After a rewrite, ask Claude to summarize what changed and why. This makes editing feel intentional instead of mysterious.",
           "icon": "rate_review"
+        },
+        {
+          "title": "Clone inspiration sites",
+          "tip": "Feed screenshots or examples of a design you like and ask Claude to apply that visual language, not just generic AI styling.",
+          "icon": "image_search"
         }
       ]
     },
@@ -846,6 +926,11 @@
           "tip": "When a tool must never run, deny it explicitly. Do not assume omission from auto-approved tools blocks access.",
           "icon": "block",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Edit permissions for safe autonomy",
+          "tip": "Explicitly allow only safe commands and deny destructive ones. You get faster agent autonomy without giving up safety.",
+          "icon": "shield"
         }
       ]
     },
@@ -924,6 +1009,21 @@
           "tip": "Give the finder a quality rubric before it searches. It should know which findings are real and which are noise.",
           "icon": "fact_check",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Build self-checking todo lists",
+          "tip": "Have Claude add verification steps after each task, such as screenshots or browser checks, before moving on.",
+          "icon": "task_alt"
+        },
+        {
+          "title": "Use screenshots for UI validation",
+          "tip": "Capture page screenshots and ask Claude whether the layout, spacing, and content look correct.",
+          "icon": "photo_camera"
+        },
+        {
+          "title": "Use Chrome DevTools for functional checks",
+          "tip": "Have Claude interact with the browser and examine the live app to validate buttons, forms, and app behavior.",
+          "icon": "developer_mode"
         }
       ]
     },
@@ -1028,6 +1128,56 @@
           "tip": "When listing session files, filter for downloadable outputs before reposting results back into chat.",
           "icon": "attach_file",
           "source": "Claude Cookbook deep research, batch 1"
+        },
+        {
+          "title": "Run /init on every project",
+          "tip": "Start by opening the repo and running /init so Claude scans the codebase and builds a project cheat sheet.",
+          "icon": "cloud"
+        },
+        {
+          "title": "Set up a status line",
+          "tip": "Use a status line to surface model, context usage, and cost in real time while you work.",
+          "icon": "monitor"
+        },
+        {
+          "title": "Use voice input when available",
+          "tip": "Use /voice or a dictation tool to speak prompts directly, speeding up your workflow for planning and quick notes.",
+          "icon": "keyboard_voice"
+        },
+        {
+          "title": "Use /re for quick undos",
+          "tip": "Rollback to a previous point with /re when a direction is wrong instead of letting the session keep drifting.",
+          "icon": "undo"
+        },
+        {
+          "title": "Use hooks for session notifications",
+          "tip": "Configure notification hooks so you get alerted when a session completes or requires your attention.",
+          "icon": "notifications"
+        },
+        {
+          "title": "Run parallel sessions with worktrees",
+          "tip": "Use Git worktrees or branches for isolated Claude sessions so experiments don't overwrite each other's files.",
+          "icon": "workspaces"
+        },
+        {
+          "title": "Use API endpoints instead of MCP servers",
+          "tip": "For narrow tasks, call the direct API endpoint instead of loading full MCP tool definitions into the context.",
+          "icon": "api"
+        },
+        {
+          "title": "Use /loop for recurring checks",
+          "tip": "Set up /loop to rerun a task or monitor a deployment every few minutes until the work is done.",
+          "icon": "loop"
+        },
+        {
+          "title": "Host sessions on a VPS",
+          "tip": "Run long-running Claude sessions on a remote VPS so work can continue even when your laptop is closed.",
+          "icon": "cloud_done"
+        },
+        {
+          "title": "Control sessions from your phone",
+          "tip": "Use remote control or mobile access so you can steer long-running sessions while away from your desk.",
+          "icon": "phone_android"
         }
       ]
     }
